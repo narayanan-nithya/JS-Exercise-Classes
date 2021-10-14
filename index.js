@@ -166,7 +166,7 @@ class Instructor extends Lambdasian {
     return `Today we are learning about ${subject}`;
   }
   grade(student, subject){
-    return `${student.name} receives a perfect score on ${subject}`;
+    return `${student} receives a perfect score on ${subject}`;
   }
 }
 const teacher = new Instructor ({
@@ -195,10 +195,34 @@ console.log(teacher.grade('Abigail', 'Python'));
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
-   
+class Student extends Lambdasian{
+   constructor (attr){
+     super (attr);
+       this.previousBackground = attr.previousBackground;
+       this.className = attr.className;
+       this.favSubjects = attr.favSubjects;
+     }
+     listSubjects(){
+       return`Loving ${this.favSubjects}`;
+     }
+     PRAssignment(student, subject){
+       return `${student} has submitted a PR for ${subject}`;
+     }
+     sprintChallenge(student, subject){
+       return `${student} has begun sprint challenge on ${subject}`
+     }
 }
-
+const pupil = new Student ({
+    name:'Abigail',
+    age: 27,
+    location: 'Los Angeles',
+    previousBackground: 'Computer Science Student',
+    className: 'CS1234',
+    favSubjects: ['HTML', 'CSS', 'JS']
+});
+console.log(pupil.listSubjects());
+console.log(pupil.PRAssignment('Abigail', 'HTML'));
+console.log(pupil.sprintChallenge('Abigail', 'JS'));
 /*
   TASK 6
     - Write a ProjectManager class extending Instructor.
