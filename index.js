@@ -131,7 +131,7 @@ class Lambdasian {
     this.location = attr.location;
   }
   speak(){
-    return `Hello my name i ${this.name}, I am from ${this.location}`;
+    return `Hello my name is ${this.name}, I am from ${this.location}`;
   }
 }
 const guy = new Lambdasian({
@@ -209,7 +209,7 @@ class Student extends Lambdasian{
        return `${student} has submitted a PR for ${subject}`;
      }
      sprintChallenge(student, subject){
-       return `${student} has begun sprint challenge on ${subject}`
+       return `${student} has begun sprint challenge on ${subject}`;
      }
 }
 const pupil = new Student ({
@@ -236,9 +236,32 @@ console.log(pupil.sprintChallenge('Abigail', 'JS'));
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
-   
+class ProjectManager extends Instructor {
+   constructor (attr){
+     super(attr);
+     this.gradClassName = attr.gradClassName;
+     this.favInstructor = attr.favInstructor;
+   }
+   standUp(channel){
+     return`${this.name} announces to ${channel}, @${channel} standy times!`;
+   }
+   debugsCode(student, subject){
+     return`${this.name} debugs ${student}'s code on ${subject}`;
+   }
 }
+const prg = new ProjectManager({
+  name: 'Stephen',
+  age: 50,
+  location: 'Santa Monica',
+  specialty: 'Python',
+  favLanguage: 'JavaScript',
+  catchPhrase: `Don't forget the homies`,
+  gradClassName: 'CS1234',
+  favInstructor: 'Jennifer'
+});
+
+console.log(prg.standUp('CS1234'));
+console.log(prg.debugsCode('Abigail', 'HTML'));
 /*
   STRETCH PROBLEM (no tests!)
     - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
